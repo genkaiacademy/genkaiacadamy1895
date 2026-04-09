@@ -28,10 +28,13 @@
     .sakura-wrap{position:fixed;inset:0;pointer-events:none;z-index:0;overflow:hidden}
     .petal{position:absolute;top:-20px;border-radius:150% 0 150% 0;animation:sakura-fall linear infinite}
     @keyframes fade-up{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:translateY(0)}}
+    @keyframes fade-in{from{opacity:0}to{opacity:1}}
+    @keyframes slide-in{from{opacity:0;transform:translateX(24px)}to{opacity:1;transform:translateX(0)}}
     @keyframes glow-pulse{0%,100%{box-shadow:0 0 8px rgba(224,85,128,.35),0 0 22px rgba(224,85,128,.18)}50%{box-shadow:0 0 16px rgba(224,85,128,.55),0 0 40px rgba(224,85,128,.28)}}
     @keyframes spin{to{transform:rotate(360deg)}}
     @keyframes float-up{from{opacity:0;transform:scale(.85) translateY(22px)}to{opacity:1;transform:scale(1) translateY(0)}}
     @keyframes check-pop{0%{transform:scale(0);opacity:0}70%{transform:scale(1.15)}100%{transform:scale(1);opacity:1}}
+    @keyframes step-in{from{opacity:0;transform:translateX(-16px)}to{opacity:1;transform:translateX(0)}}
     .anim-fade-up{animation:fade-up .65s ease-out both}
     .anim-float-up{animation:float-up .5s cubic-bezier(.34,1.56,.64,1) both}
     .d1{animation-delay:.1s}.d2{animation-delay:.2s}.d3{animation-delay:.3s}
@@ -88,7 +91,6 @@
     .section-count{font-size:12px;color:var(--text-light)}
     .notif{padding:20px;margin-bottom:12px;cursor:default;transition:transform .2s,box-shadow .2s}
     .notif:hover{transform:translateY(-2px);box-shadow:0 8px 30px rgba(224,85,128,.14)}
-    .notif-new{border-left:3px solid var(--pink);background:linear-gradient(to right,rgba(224,85,128,.04),rgba(255,255,255,.88));cursor:pointer}
     .notif-meta{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-bottom:6px}
     .notif-date{font-size:11px;color:var(--text-light)}
     .notif-title{font-size:14px;font-weight:600;color:var(--text-dark);margin-bottom:4px}
@@ -104,7 +106,7 @@
     .form-page-sub{font-size:13px;color:var(--text-light);margin-bottom:28px}
     .grid-2{display:grid;grid-template-columns:1fr 1fr;gap:16px}
     @media(max-width:480px){.grid-2{grid-template-columns:1fr}}
-    .upload-zone{border:2px dashed var(--border);border-radius:12px;padding:28px;text-align:center;cursor:pointer;transition:border-color .2s,background .2s}
+    .upload-zone{border:2px dashed var(--border);border-radius:12px;padding:24px;text-align:center;cursor:pointer;transition:border-color .2s,background .2s}
     .upload-zone:hover{border-color:var(--pink);background:var(--pink-pale)}
     .upload-icon{width:42px;height:42px;border-radius:10px;background:var(--pink-muted);display:flex;align-items:center;justify-content:center;margin:0 auto 10px;font-size:18px}
     .upload-main{font-size:13px;font-weight:600;color:#555;margin-bottom:3px}
@@ -114,14 +116,25 @@
     .success-title{font-size:22px;font-weight:700;color:var(--text-dark);margin-bottom:12px}
     .success-msg{font-size:14px;color:var(--text-mid);line-height:1.65;margin-bottom:28px}
     .no-reg{display:flex;align-items:flex-start;gap:10px;background:#fff5f5;border:1px solid #ffcdd2;border-radius:12px;padding:12px 16px;margin-bottom:16px;font-size:13px;color:#c62828;font-weight:500}
-    .result-card{background:rgba(255,240,244,.55);border:1px solid var(--border);border-radius:14px;padding:20px}
+    .result-card{background:rgba(255,240,244,.55);border:1px solid var(--border);border-radius:14px;padding:20px;margin-bottom:14px}
     .result-label{font-size:10px;text-transform:uppercase;letter-spacing:.12em;color:var(--pink);font-weight:700;margin-bottom:14px}
     .result-row{display:flex;justify-content:space-between;align-items:center;padding:10px 0;border-bottom:1px solid var(--border)}
     .result-row:last-child{border-bottom:none}
     .result-key{font-size:12px;color:var(--text-light);font-weight:500}
-    .result-val{font-size:14px;font-weight:700;color:var(--text-dark)}
+    .result-val{font-size:13px;font-weight:700;color:var(--text-dark);text-align:right;max-width:60%}
+    .result-val.verified{color:#2e7d32}
+    .result-val.incomplete{color:#c62828}
+    .warn-note{display:flex;align-items:flex-start;gap:10px;background:#fff8e1;border:1px solid #ffe082;border-radius:12px;padding:14px 16px;margin-bottom:16px;font-size:13px;color:#6d4c00;line-height:1.55}
+    .step-item{display:flex;align-items:flex-start;gap:14px;padding:16px;border-radius:14px;background:rgba(255,255,255,.75);border:1px solid var(--border);margin-bottom:10px;transition:transform .2s,box-shadow .2s;animation:step-in .5s ease-out both}
+    .step-item:hover{transform:translateX(4px);box-shadow:0 4px 16px rgba(224,85,128,.1)}
+    .step-num{width:32px;height:32px;border-radius:50%;background:linear-gradient(135deg,var(--pink),var(--rose));color:#fff;font-size:13px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0;box-shadow:0 3px 10px rgba(224,85,128,.3)}
+    .step-label{font-size:14px;font-weight:600;color:var(--text-dark);line-height:1.4}
+    .step-sub{font-size:12px;color:var(--text-light);margin-top:2px}
     .divider{display:flex;align-items:center;gap:12px;font-size:12px;color:rgba(224,85,128,.5);margin:24px 0}
     .divider::before,.divider::after{content:'';flex:1;height:1px;background:linear-gradient(to right,transparent,rgba(224,85,128,.3),transparent)}
+    .section-divider{display:flex;align-items:center;gap:12px;margin:24px 0 18px}
+    .section-divider-line{flex:1;height:1px;background:linear-gradient(to right,rgba(224,85,128,.25),transparent)}
+    .section-divider-text{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.12em;color:var(--pink);white-space:nowrap}
     footer{padding:20px;text-align:center}
     .loading-wrap{position:fixed;inset:0;background:#fff;display:flex;flex-direction:column;align-items:center;justify-content:center;z-index:100}
     .loading-ring{width:40px;height:40px;border:2px solid var(--pink-muted);border-top-color:var(--pink);border-radius:50%;animation:spin 1s linear infinite;margin-bottom:20px}
@@ -151,7 +164,6 @@ const PETALS = Array.from({ length: 18 }, (_, i) => ({
   dur: 9 + Math.random() * 11, delay: Math.random() * 16,
   opacity: 0.45 + Math.random() * 0.45, hue: 338 + Math.random() * 22 - 11,
 }));
-
 function Sakura() {
   return (
     <div className="sakura-wrap">
@@ -165,7 +177,6 @@ function Sakura() {
     </div>
   );
 }
-
 function Loading() {
   return (
     <div className="loading-wrap">
@@ -174,7 +185,6 @@ function Loading() {
     </div>
   );
 }
-
 function BackBtn({ onClick }) {
   return (
     <button className="btn-ghost" onClick={onClick} style={{display:'flex',alignItems:'center',gap:6,padding:'7px 12px'}}>
@@ -185,7 +195,6 @@ function BackBtn({ onClick }) {
     </button>
   );
 }
-
 function Header({ userName, onLogout, left }) {
   return (
     <header>
@@ -214,7 +223,6 @@ function LoginPage({ onLogin }) {
   const [pw, setPw] = useState('');
   const [err, setErr] = useState('');
   const [loading, setLoading] = useState(false);
-
   async function submit(e) {
     e.preventDefault(); setErr(''); setLoading(true);
     await new Promise(r => setTimeout(r, 650));
@@ -223,7 +231,6 @@ function LoginPage({ onLogin }) {
     else setErr('Invalid credentials. Please check your email / student ID and password.');
     setLoading(false);
   }
-
   return (
     <div className="page login-bg centered" style={{flexDirection:'column',padding:'40px 16px'}}>
       <Sakura />
@@ -264,14 +271,12 @@ function ExamFormPage({ onBack }) {
   const [loading, setLoading] = useState(false);
   const [done, setDone] = useState(false);
   const fileRef = useRef();
-
   function change(e) { setFields(f=>({...f,[e.target.name]:e.target.value})); }
   async function submit(e) {
     e.preventDefault(); setLoading(true);
     await new Promise(r=>setTimeout(r,1100));
     setLoading(false); setDone(true);
   }
-
   if (done) return (
     <div className="page form-page-bg centered" style={{padding:'40px 16px'}}>
       <Sakura />
@@ -291,7 +296,6 @@ function ExamFormPage({ onBack }) {
       </div>
     </div>
   );
-
   return (
     <div className="page form-page-bg">
       <Sakura />
@@ -325,7 +329,7 @@ function ExamFormPage({ onBack }) {
                 <div className="form-group">
                   <label className="form-label">Upload Scorecard <span style={{color:'#e57373'}}>*</span></label>
                   <div className="upload-zone" onClick={()=>fileRef.current.click()}>
-                    <input ref={fileRef} type="file" accept=".pdf,.jpg,.jpeg,.png" style={{display:'none'}} onChange={e=>setFile(e.target.files[0])} required/>
+                    <input ref={fileRef} type="file" accept=".pdf,.jpg,.jpeg,.png" style={{display:'none'}} onChange={e=>setFile(e.target.files[0])}/>
                     <div className="upload-icon">📎</div>
                     {file ? <p className="upload-name">{file.name}</p> : <>
                       <p className="upload-main">Click to upload scorecard</p>
@@ -345,17 +349,15 @@ function ExamFormPage({ onBack }) {
   );
 }
 
-function SchoolCodePage({ onBack }) {
+function SchoolCodePage({ onBack, onIDVerify }) {
   const [code, setCode] = useState('');
   const [state, setState] = useState('idle');
-
   async function submit(e) {
     e.preventDefault(); if(!code.trim()) return;
     setState('loading');
     await new Promise(r=>setTimeout(r,800));
     setState('result');
   }
-
   return (
     <div className="page form-page-bg">
       <Sakura />
@@ -363,7 +365,7 @@ function SchoolCodePage({ onBack }) {
         <Header left={<BackBtn onClick={onBack}/>}/>
         <main>
           <div className="container">
-            <div className="card form-card anim-fade-up" style={{maxWidth:520,margin:'0 auto'}}>
+            <div className="card form-card anim-fade-up" style={{maxWidth:560,margin:'0 auto'}}>
               <h2 className="form-page-title">School Code Verification</h2>
               <p className="form-page-sub">Enter your school code to verify your registration details.</p>
               <form onSubmit={submit}>
@@ -372,21 +374,40 @@ function SchoolCodePage({ onBack }) {
                   <input type="text" value={code} onChange={e=>setCode(e.target.value)} placeholder="Enter school code" required disabled={state==='loading'||state==='result'}/>
                 </div>
                 {state==='idle' && <button type="submit" className="btn-primary">Verify Code</button>}
-                {state==='loading' && <div style={{display:'flex',alignItems:'center',justifyContent:'center',gap:10,padding:'12px 0',color:'#888',fontSize:14}}><span className="spinner spinner-pink"/>Verifying...</div>}
+                {state==='loading' && (
+                  <div style={{display:'flex',alignItems:'center',justifyContent:'center',gap:10,padding:'12px 0',color:'#888',fontSize:14}}>
+                    <span className="spinner spinner-pink"/>Verifying...
+                  </div>
+                )}
               </form>
               {state==='result' && (
                 <div className="anim-fade-up" style={{marginTop:24}}>
                   <div className="no-reg"><span>⚠️</span>No registration found for this code</div>
                   <div className="result-card">
                     <p className="result-label">Student Record</p>
-                    {[['Name','Vansh'],['Country','India'],['Board','CBSE'],['Registration Year','2026']].map(([k,v])=>(
+                    {[
+                      ['Name','Vansh',null],
+                      ['Country','India',null],
+                      ['Board','CBSE',null],
+                      ['Registration Year','2026',null],
+                      ['Assigned School','Horikoshi High School',null],
+                      ['Student ID Proof','Verified','verified'],
+                      ['COE','Verified','verified'],
+                      ['Visa','Not yet complete','incomplete'],
+                      ['State','Uttar Pradesh, India (North Region)',null],
+                    ].map(([k,v,cls])=>(
                       <div className="result-row" key={k}>
                         <span className="result-key">{k}</span>
-                        <span className="result-val">{v}</span>
+                        <span className={`result-val${cls?' '+cls:''}`}>{v}</span>
                       </div>
                     ))}
                   </div>
-                  <button className="btn-outline-pink" style={{marginTop:16}} onClick={()=>{setCode('');setState('idle');}}>Search Another Code</button>
+                  <div className="warn-note">
+                    <span style={{flexShrink:0,fontSize:16}}>⚠️</span>
+                    <span><strong>Important:</strong> ID verification is still remaining. Students are advised to complete their verification as soon as possible.</span>
+                  </div>
+                  <button className="btn-primary" style={{marginBottom:10}} onClick={onIDVerify}>Complete ID Verification →</button>
+                  <button className="btn-outline-pink" onClick={()=>{setCode('');setState('idle');}}>Search Another Code</button>
                 </div>
               )}
             </div>
@@ -397,19 +418,151 @@ function SchoolCodePage({ onBack }) {
   );
 }
 
+function IDVerifyPage({ onBack }) {
+  const [fields, setFields] = useState({name:'',country:'',studentId:'',assignedSchool:''});
+  const [photo, setPhoto] = useState(null);
+  const [submitted, setSubmitted] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const photoRef = useRef();
+
+  const steps = [
+    { icon:'🪪', label:'Upload Government ID', sub:'Passport, Aadhaar, or National ID accepted' },
+    { icon:'📄', label:'Upload Last 4 Grades Scorecard', sub:'PDF or image of your last 4 term results' },
+    { icon:'🏥', label:'Upload Health Certificate', sub:'Official medical fitness certificate required' },
+    { icon:'🏫', label:'Enter Current School in India', sub:'Full name of your current enrolled institution' },
+    { icon:'🎌', label:'Upload Japanese Language Certificate', sub:'JLPT or equivalent language certificate' },
+  ];
+
+  function changeField(e) { setFields(f=>({...f,[e.target.name]:e.target.value})); }
+  async function submitForm(e) {
+    e.preventDefault(); setLoading(true);
+    await new Promise(r=>setTimeout(r,1000));
+    setLoading(false); setSubmitted(true);
+  }
+
+  if (submitted) return (
+    <div className="page form-page-bg centered" style={{padding:'40px 16px'}}>
+      <Sakura />
+      <div className="page-inner" style={{width:'100%',maxWidth:440}}>
+        <div className="card anim-float-up" style={{padding:'40px 28px',textAlign:'center'}}>
+          <div className="success-icon">
+            <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
+              <circle cx="16" cy="16" r="14" stroke="#4caf50" strokeWidth="2"/>
+              <path d="M10 16.5l4.5 4.5 8-9" stroke="#4caf50" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/>
+            </svg>
+          </div>
+          <h2 className="success-title">Registration Submitted</h2>
+          <p className="success-msg">Your Japanese language exam registration has been received.<br/>Genkai Academy will contact you with exam details soon.</p>
+          <div className="divider"><span>🌸</span></div>
+          <button className="btn-primary" onClick={onBack}>Return to Dashboard</button>
+        </div>
+      </div>
+    </div>
+  );
+
+  return (
+    <div className="page form-page-bg">
+      <Sakura />
+      <div className="page-inner">
+        <Header left={<BackBtn onClick={onBack}/>}/>
+        <main>
+          <div className="container">
+            <div style={{maxWidth:600,margin:'0 auto'}}>
+              <div className="card form-card anim-fade-up" style={{marginBottom:16}}>
+                <div style={{display:'flex',alignItems:'center',gap:12,marginBottom:10}}>
+                  <div style={{width:40,height:40,borderRadius:12,background:'linear-gradient(135deg,#e05580,#c0392b)',display:'flex',alignItems:'center',justifyContent:'center',fontSize:20,flexShrink:0}}>🪪</div>
+                  <div>
+                    <h2 className="form-page-title" style={{marginBottom:0}}>ID Verification</h2>
+                    <p style={{fontSize:12,color:'var(--pink)',marginTop:2}}>Genkai Academy · 2026</p>
+                  </div>
+                </div>
+                <p style={{fontSize:13,color:'var(--text-mid)',lineHeight:1.6}}>Complete the following 5 verification steps to finalize your enrollment. All documents must be authentic and legible.</p>
+              </div>
+
+              <div style={{marginBottom:16}}>
+                <div className="section-divider">
+                  <div className="section-divider-line"/>
+                  <span className="section-divider-text">Required Steps</span>
+                  <div className="section-divider-line" style={{background:'linear-gradient(to left,rgba(224,85,128,.25),transparent)'}}/>
+                </div>
+                {steps.map((s,i)=>(
+                  <div key={i} className="step-item" style={{animationDelay:(i*0.08)+'s'}}>
+                    <div className="step-num">{i+1}</div>
+                    <div style={{flex:1}}>
+                      <div className="step-label">{s.icon} {s.label}</div>
+                      <div className="step-sub">{s.sub}</div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+
+              <div className="warn-note anim-fade-up">
+                <span style={{flexShrink:0,fontSize:16}}>🎌</span>
+                <span><strong>No Japanese Certificate?</strong> If you do not have a Japanese certificate, you must take a Japanese level exam with the help of Genkai Academy.</span>
+              </div>
+
+              <div className="card form-card anim-fade-up d2">
+                <div className="section-divider" style={{marginTop:0}}>
+                  <div className="section-divider-line"/>
+                  <span className="section-divider-text">Japanese Exam Registration</span>
+                  <div className="section-divider-line" style={{background:'linear-gradient(to left,rgba(224,85,128,.25),transparent)'}}/>
+                </div>
+                <form onSubmit={submitForm}>
+                  <div className="form-group">
+                    <label className="form-label">Name <span style={{color:'#e57373'}}>*</span></label>
+                    <input type="text" name="name" value={fields.name} onChange={changeField} placeholder="Your full name" required/>
+                  </div>
+                  <div className="form-group">
+                    <label className="form-label">Country <span style={{color:'#e57373'}}>*</span></label>
+                    <input type="text" name="country" value={fields.country} onChange={changeField} placeholder="e.g. India" required/>
+                  </div>
+                  <div className="form-group">
+                    <label className="form-label">Student ID <span style={{color:'#e57373'}}>*</span></label>
+                    <input type="text" name="studentId" value={fields.studentId} onChange={changeField} placeholder="Your student ID number" required/>
+                  </div>
+                  <div className="form-group">
+                    <label className="form-label">Assigned School <span style={{color:'#e57373'}}>*</span></label>
+                    <input type="text" name="assignedSchool" value={fields.assignedSchool} onChange={changeField} placeholder="e.g. Horikoshi High School" required/>
+                  </div>
+                  <div className="form-group">
+                    <label className="form-label">Upload Photo <span style={{color:'#e57373'}}>*</span></label>
+                    <div className="upload-zone" onClick={()=>photoRef.current.click()}>
+                      <input ref={photoRef} type="file" accept=".jpg,.jpeg,.png" style={{display:'none'}} onChange={e=>setPhoto(e.target.files[0])}/>
+                      <div className="upload-icon">📷</div>
+                      {photo ? <p className="upload-name">{photo.name}</p> : <>
+                        <p className="upload-main">Click to upload your photo</p>
+                        <p className="upload-sub">JPG or PNG, passport-style photo</p>
+                      </>}
+                    </div>
+                  </div>
+                  <button type="submit" className="btn-primary" disabled={loading||!photo}>
+                    {loading ? <><span className="spinner"/>Submitting...</> : 'Register for Japanese Exam'}
+                  </button>
+                </form>
+              </div>
+            </div>
+          </div>
+        </main>
+        <footer><div className="divider"><span>🌸 Genkai Academy · 2026</span></div></footer>
+      </div>
+    </div>
+  );
+}
+
 const NOTIFICATIONS = [
-  {id:1, date:'April 7, 2026', title:'Final Exam is Live', preview:'The final examination is now live. Click to submit your details and scorecard.', type:'new', clickable:true},
+  {id:1, date:'April 7, 2026', title:'Final Exam is Live', preview:'The final examination is now live. Click to submit your details and scorecard.', type:'new', clickable:true, action:'exam'},
   {id:2, date:'April 6, 2026', title:'Exam Availability Update', body:'Final exam is live for Southern and Western countries. Students from Europe will receive updates soon.', type:'info', clickable:false},
   {id:3, date:'April 6, 2026', title:'Portal Notice', body:'This is the Genkai Academy Temporary Notification Website.', type:'general', clickable:false},
+  {id:4, date:'April 9, 2026', title:'School Code Information', body:'The school code is used to check your verification status. This helps your assigned school to send your information into the system.', type:'new', clickable:false},
+  {id:5, date:'April 9, 2026', title:'Europe Registration Now Live', body:'Europe registration is now live. Students can register and applications will be accepted.', type:'new', clickable:false},
 ];
 
 function DashboardPage({ onLogout }) {
   const user = getSession();
   const [view, setView] = useState('dashboard');
-
   if (view==='exam') return <ExamFormPage onBack={()=>setView('dashboard')}/>;
-  if (view==='code') return <SchoolCodePage onBack={()=>setView('dashboard')}/>;
-
+  if (view==='code') return <SchoolCodePage onBack={()=>setView('dashboard')} onIDVerify={()=>setView('idverify')}/>;
+  if (view==='idverify') return <IDVerifyPage onBack={()=>setView('dashboard')}/>;
   return (
     <div className="page dash-bg">
       <Sakura />
@@ -428,19 +581,28 @@ function DashboardPage({ onLogout }) {
               <span className="badge-active">Active</span>
             </div>
             <div className="card school-card anim-fade-up d1">
-              <p className="school-label">School Code Lookup</p>
-              <button className="btn-outline-pink" onClick={()=>setView('code')}>Enter School Code →</button>
+              <p className="school-label">Quick Access</p>
+              <div style={{display:'flex',gap:10,flexWrap:'wrap'}}>
+                <button className="btn-outline-pink" style={{width:'auto'}} onClick={()=>setView('code')}>🔑 School Code →</button>
+                <button className="btn-primary" style={{width:'auto',padding:'11px 18px'}} onClick={()=>setView('idverify')}>🪪 ID Verification</button>
+              </div>
             </div>
             <div className="section-header anim-fade-up d2">
               <span className="section-title">📢 Notifications</span>
               <span className="section-count">{NOTIFICATIONS.length} total</span>
             </div>
             {NOTIFICATIONS.map((n,i)=>(
-              <div key={n.id} className={`card notif anim-fade-up ${n.type==='new'?'notif-new':''}`}
-                style={{animationDelay:(0.2+i*0.1)+'s'}}
-                onClick={n.clickable?()=>setView('exam'):undefined}
-                role={n.clickable?'button':undefined} tabIndex={n.clickable?0:undefined}
-                onKeyDown={n.clickable?e=>e.key==='Enter'&&setView('exam'):undefined}>
+              <div key={n.id} className="card notif anim-fade-up"
+                style={{
+                  animationDelay:(0.2+i*0.08)+'s',
+                  borderLeft: n.type==='new' ? '3px solid var(--pink)' : undefined,
+                  cursor: n.clickable ? 'pointer' : 'default',
+                  background: n.type==='new' ? 'linear-gradient(to right,rgba(224,85,128,.04),rgba(255,255,255,.88))' : undefined,
+                }}
+                onClick={n.clickable?()=>setView(n.action||'exam'):undefined}
+                role={n.clickable?'button':undefined}
+                tabIndex={n.clickable?0:undefined}
+                onKeyDown={n.clickable?e=>e.key==='Enter'&&setView(n.action||'exam'):undefined}>
                 <div className="notif-meta">
                   {n.type==='new'&&<span className="new-badge">New</span>}
                   {n.type==='info'&&<span className="info-badge">Info</span>}
