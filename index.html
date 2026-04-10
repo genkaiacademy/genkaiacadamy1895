@@ -40,13 +40,13 @@
     input[type=text],input[type=password],input[type=email]{width:100%;padding:12px 16px;border:1.5px solid var(--border);border-radius:12px;font-family:inherit;font-size:14px;background:#fff;color:var(--text-dark);outline:none;transition:border-color .2s,box-shadow .2s}
     input:focus{border-color:var(--pink);box-shadow:0 0 0 3px rgba(224,85,128,.15)}
     input::placeholder{color:#bbb} input:disabled{opacity:.55}
-    .btn-primary{width:100%;padding:13px 20px;background:linear-gradient(135deg,var(--pink),var(--rose));color:#fff;font-family:inherit;font-size:14px;font-weight:600;border:none;border-radius:12px;cursor:pointer;box-shadow:0 4px 14px rgba(224,85,128,.3);transition:transform .15s,box-shadow .2s,opacity .2s}
+    .btn-primary{width:100%;padding:13px 20px;background:linear-gradient(135deg,var(--pink),var(--rose));color:#fff;font-family:inherit;font-size:14px;font-weight:600;border:none;border-radius:12px;cursor:pointer;box-shadow:0 4px 14px rgba(224,85,128,.3);transition:transform .15s,box-shadow .2s,opacity .2s;display:block}
     .btn-primary:hover:not(:disabled){transform:scale(1.025);box-shadow:0 6px 20px rgba(224,85,128,.4)}
     .btn-primary:active:not(:disabled){transform:scale(.97)}
     .btn-primary:disabled{opacity:.55;cursor:not-allowed}
     .btn-ghost{padding:10px 16px;background:#fff;border:1.5px solid var(--border);border-radius:10px;font-family:inherit;font-size:13px;color:var(--text-mid);cursor:pointer;transition:color .2s,border-color .2s,background .2s,transform .15s}
     .btn-ghost:hover{border-color:var(--pink);color:var(--pink);background:var(--pink-pale);transform:scale(1.02)}
-    .btn-outline-pink{width:100%;padding:11px 16px;background:#fff;border:1.5px solid var(--border);border-radius:12px;font-family:inherit;font-size:14px;font-weight:500;color:var(--pink);cursor:pointer;transition:background .2s,border-color .2s,transform .15s}
+    .btn-outline-pink{width:100%;padding:11px 16px;background:#fff;border:1.5px solid var(--border);border-radius:12px;font-family:inherit;font-size:14px;font-weight:500;color:var(--pink);cursor:pointer;transition:background .2s,border-color .2s,transform .15s;display:block}
     .btn-outline-pink:hover{background:var(--pink-pale);border-color:var(--pink);transform:scale(1.02)}
     .page{min-height:100vh;position:relative;overflow:hidden}
     .page-inner{position:relative;z-index:1}
@@ -105,11 +105,12 @@
     .grid-2{display:grid;grid-template-columns:1fr 1fr;gap:16px}
     @media(max-width:480px){.grid-2{grid-template-columns:1fr}}
     .upload-zone{border:2px dashed var(--border);border-radius:12px;padding:24px;text-align:center;cursor:pointer;transition:border-color .2s,background .2s}
-    .upload-zone:hover{border-color:var(--pink);background:var(--pink-pale)}
+    .upload-zone:hover,.upload-zone.has-file{border-color:var(--pink);background:var(--pink-pale)}
     .upload-icon{width:42px;height:42px;border-radius:10px;background:var(--pink-muted);display:flex;align-items:center;justify-content:center;margin:0 auto 10px;font-size:18px}
     .upload-main{font-size:13px;font-weight:600;color:#555;margin-bottom:3px}
     .upload-sub{font-size:11px;color:#aaa}
     .upload-name{font-size:13px;font-weight:600;color:var(--pink)}
+    .upload-zone-success{border:2px solid #4caf50;background:#f1f8e9;border-radius:12px;padding:16px;display:flex;align-items:center;gap:10px}
     .success-icon{width:68px;height:68px;border-radius:50%;background:#e8f5e9;margin:0 auto 20px;display:flex;align-items:center;justify-content:center;animation:check-pop .6s cubic-bezier(.34,1.56,.64,1) both}
     .success-title{font-size:22px;font-weight:700;color:var(--text-dark);margin-bottom:12px}
     .success-msg{font-size:14px;color:var(--text-mid);line-height:1.65;margin-bottom:28px}
@@ -123,9 +124,12 @@
     .result-val.verified{color:#2e7d32}
     .result-val.incomplete{color:#c62828}
     .warn-note{display:flex;align-items:flex-start;gap:10px;background:#fff8e1;border:1px solid #ffe082;border-radius:12px;padding:14px 16px;margin-bottom:16px;font-size:13px;color:#6d4c00;line-height:1.55}
-    .step-item{display:flex;align-items:flex-start;gap:14px;padding:16px;border-radius:14px;background:rgba(255,255,255,.75);border:1px solid var(--border);margin-bottom:10px;transition:transform .2s,box-shadow .2s;animation:step-in .5s ease-out both}
-    .step-item:hover{transform:translateX(4px);box-shadow:0 4px 16px rgba(224,85,128,.1)}
+    .step-item{display:flex;align-items:flex-start;gap:14px;padding:16px;border-radius:14px;background:rgba(255,255,255,.75);border:1px solid var(--border);margin-bottom:10px;transition:transform .2s,box-shadow .2s,border-color .2s,background .2s;animation:step-in .5s ease-out both;cursor:pointer}
+    .step-item:hover{transform:translateX(4px);box-shadow:0 4px 16px rgba(224,85,128,.1);border-color:rgba(224,85,128,.3)}
+    .step-item.expanded{background:rgba(255,240,244,.55);border-color:rgba(224,85,128,.25)}
+    .step-item.completed{border-color:#4caf50;background:rgba(241,248,233,.5)}
     .step-num{width:32px;height:32px;border-radius:50%;background:linear-gradient(135deg,var(--pink),var(--rose));color:#fff;font-size:13px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0;box-shadow:0 3px 10px rgba(224,85,128,.3)}
+    .step-num.completed{background:linear-gradient(135deg,#4caf50,#2e7d32)}
     .step-label{font-size:14px;font-weight:600;color:var(--text-dark);line-height:1.4}
     .step-sub{font-size:12px;color:var(--text-light);margin-top:2px}
     .divider{display:flex;align-items:center;gap:12px;font-size:12px;color:rgba(224,85,128,.5);margin:24px 0}
@@ -157,7 +161,7 @@ function getSession() {
 function setSession(u) { sessionStorage.setItem('gk_user', JSON.stringify(u)); }
 function clearSession() { sessionStorage.removeItem('gk_user'); }
 
-const PETALS = Array.from({ length: 18 }, (_, i) => ({
+const PETALS = Array.from({ length: 22 }, (_, i) => ({
   id: i, left: Math.random() * 100, size: 7 + Math.random() * 7,
   dur: 9 + Math.random() * 11, delay: Math.random() * 16,
   opacity: 0.45 + Math.random() * 0.45, hue: 338 + Math.random() * 22 - 11,
@@ -326,7 +330,7 @@ function ExamFormPage({ onBack }) {
                 </div>
                 <div className="form-group">
                   <label className="form-label">Upload Scorecard <span style={{color:'#e57373'}}>*</span></label>
-                  <div className="upload-zone" onClick={()=>fileRef.current.click()}>
+                  <div className={`upload-zone${file?' has-file':''}`} onClick={()=>fileRef.current.click()}>
                     <input ref={fileRef} type="file" accept=".pdf,.jpg,.jpeg,.png" style={{display:'none'}} onChange={e=>setFile(e.target.files[0])}/>
                     <div className="upload-icon">📎</div>
                     {file ? <p className="upload-name">{file.name}</p> : <>
@@ -347,6 +351,54 @@ function ExamFormPage({ onBack }) {
   );
 }
 
+function StepSection({ step, onComplete, savedData }) {
+  const [file, setFile] = useState(savedData && savedData.file ? savedData.file : null);
+  const [text, setText] = useState(savedData && savedData.text ? savedData.text : '');
+  const fileRef = useRef();
+  const isValid = step.type === 'upload' ? !!file : text.trim().length > 0;
+  return (
+    <div style={{marginTop:14,padding:'14px 16px',background:'rgba(255,240,244,.45)',borderRadius:12,border:'1px solid rgba(224,85,128,.15)'}}>
+      {step.type === 'upload' ? (
+        <>
+          <label className="form-label">{step.fieldLabel} <span style={{color:'#e57373'}}>*</span></label>
+          {file ? (
+            <div className="upload-zone-success">
+              <span style={{fontSize:20}}>✅</span>
+              <div style={{flex:1}}>
+                <p style={{fontSize:13,fontWeight:600,color:'#2e7d32'}}>{file.name}</p>
+                <p style={{fontSize:11,color:'#555',marginTop:2}}>File selected</p>
+              </div>
+              <button type="button" onClick={()=>{setFile(null);if(fileRef.current)fileRef.current.value='';}}
+                style={{fontSize:11,color:'#e05580',cursor:'pointer',background:'none',border:'none',fontFamily:'inherit'}}>Change</button>
+            </div>
+          ) : (
+            <div className="upload-zone" onClick={()=>fileRef.current.click()}>
+              <input ref={fileRef} type="file" accept=".pdf,.jpg,.jpeg,.png" style={{display:'none'}} onChange={e=>setFile(e.target.files[0])}/>
+              <div style={{width:36,height:36,borderRadius:10,background:'var(--pink-muted)',display:'flex',alignItems:'center',justifyContent:'center',margin:'0 auto 8px',fontSize:16}}>📎</div>
+              <p style={{fontSize:13,fontWeight:600,color:'#555',marginBottom:3}}>Click to upload</p>
+              <p style={{fontSize:11,color:'#aaa'}}>PDF, JPG, PNG accepted</p>
+            </div>
+          )}
+        </>
+      ) : (
+        <>
+          <label className="form-label">{step.fieldLabel} <span style={{color:'#e57373'}}>*</span></label>
+          <input type="text" value={text} onChange={e=>setText(e.target.value)} placeholder={step.fieldPlaceholder}/>
+        </>
+      )}
+      <div style={{marginTop:12,display:'flex',justifyContent:'flex-end'}}>
+        <button type="button" className="btn-primary" disabled={!isValid}
+          onClick={()=>onComplete(step.type==='upload'?{file}:{text})}
+          style={{width:'auto',padding:'9px 20px',fontSize:13}}>
+          Save &amp; Continue →
+        </button>
+      </div>
+    </div>
+  );
+}
+
+const VALID_CODE = 'M672346';
+
 function SchoolCodePage({ onBack }) {
   const [code, setCode] = useState('');
   const [state, setState] = useState('idle');
@@ -355,26 +407,32 @@ function SchoolCodePage({ onBack }) {
   const [japanLoading, setJapanLoading] = useState(false);
   const [japanDone, setJapanDone] = useState(false);
   const photoRef = useRef();
+  const [expandedStep, setExpandedStep] = useState(null);
+  const [completedSteps, setCompletedSteps] = useState({});
 
   const steps = [
-    { icon:'🪪', label:'Upload Government ID', sub:'Passport, Aadhaar, or National ID accepted' },
-    { icon:'📄', label:'Upload Last 4 Grades Scorecard', sub:'PDF or image of your last 4 term results' },
-    { icon:'🏥', label:'Upload Health Certificate', sub:'Official medical fitness certificate required' },
-    { icon:'🏫', label:'Enter Current School in India', sub:'Full name of your current enrolled institution' },
-    { icon:'🎌', label:'Upload Japanese Language Certificate', sub:'JLPT or equivalent language certificate' },
+    { icon:'🪪', label:'Upload Government ID', sub:'Passport, Aadhaar, or National ID accepted', type:'upload', fieldLabel:'Upload Government ID (Passport, Aadhaar, or National ID)' },
+    { icon:'📄', label:'Upload Last 4 Grades Scorecard', sub:'PDF or image of your last 4 term results', type:'upload', fieldLabel:'Upload Scorecard (last 4 terms)' },
+    { icon:'🏥', label:'Upload Health Certificate', sub:'Official medical fitness certificate required', type:'upload', fieldLabel:'Upload Health Certificate' },
+    { icon:'🏫', label:'Enter Current School in India', sub:'Full name of your current enrolled institution', type:'text', fieldLabel:'Current School Name', fieldPlaceholder:'Enter the full name of your school in India' },
+    { icon:'🎌', label:'Upload Japanese Language Certificate', sub:'JLPT or equivalent language certificate', type:'upload', fieldLabel:'Upload Japanese Language Certificate (JLPT or equivalent)' },
   ];
 
   async function submit(e) {
     e.preventDefault(); if(!code.trim()) return;
     setState('loading');
     await new Promise(r=>setTimeout(r,800));
-    setState('result');
+    setState(code.trim().toUpperCase()===VALID_CODE ? 'result' : 'invalid');
   }
   function changeJapan(e) { setJapanFields(f=>({...f,[e.target.name]:e.target.value})); }
   async function submitJapan(e) {
     e.preventDefault(); setJapanLoading(true);
     await new Promise(r=>setTimeout(r,1000));
     setJapanLoading(false); setJapanDone(true);
+  }
+  function handleStepComplete(idx, data) {
+    setCompletedSteps(prev=>({...prev,[idx]:data}));
+    setExpandedStep(null);
   }
 
   if (japanDone) return (
@@ -414,6 +472,12 @@ function SchoolCodePage({ onBack }) {
                     <input type="text" value={code} onChange={e=>setCode(e.target.value)} placeholder="Enter your school code" required disabled={state==='loading'||state==='result'}/>
                   </div>
                   {state==='idle' && <button type="submit" className="btn-primary">Verify Code</button>}
+                  {state==='invalid' && (
+                    <>
+                      <div className="error-box">❌ Invalid school code. Please check and try again.</div>
+                      <button type="button" className="btn-outline-pink" onClick={()=>{setCode('');setState('idle');}}>Try Again</button>
+                    </>
+                  )}
                   {state==='loading' && (
                     <div style={{display:'flex',alignItems:'center',justifyContent:'center',gap:10,padding:'12px 0',color:'#888',fontSize:14}}>
                       <span className="spinner spinner-pink"/>Verifying...
@@ -422,7 +486,6 @@ function SchoolCodePage({ onBack }) {
                 </form>
                 {state==='result' && (
                   <div className="anim-fade-up" style={{marginTop:24}}>
-                    <div className="no-reg"><span>⚠️</span>No registration found for this code</div>
                     <div className="result-card">
                       <p className="result-label">Student Record</p>
                       {[
@@ -466,15 +529,36 @@ function SchoolCodePage({ onBack }) {
                       <span className="section-divider-text">Required Steps</span>
                       <div className="section-divider-line" style={{background:'linear-gradient(to left,rgba(224,85,128,.25),transparent)'}}/>
                     </div>
-                    {steps.map((s,i)=>(
-                      <div key={i} className="step-item" style={{animationDelay:(i*0.07)+'s'}}>
-                        <div className="step-num">{i+1}</div>
-                        <div style={{flex:1}}>
-                          <div className="step-label">{s.icon} {s.label}</div>
-                          <div className="step-sub">{s.sub}</div>
+                    {steps.map((s,i)=>{
+                      const isCompleted = !!completedSteps[i];
+                      const isExpanded = expandedStep===i;
+                      return (
+                        <div key={i}>
+                          <div className={`step-item${isExpanded?' expanded':''}${isCompleted?' completed':''}`}
+                            style={{animationDelay:(i*0.07)+'s'}}
+                            onClick={()=>setExpandedStep(prev=>prev===i?null:i)}>
+                            <div className={`step-num${isCompleted?' completed':''}`}>{isCompleted?'✓':i+1}</div>
+                            <div style={{flex:1}}>
+                              <div className="step-label">{s.icon} {s.label}</div>
+                              <div className="step-sub">{s.sub}</div>
+                            </div>
+                            <div style={{color:'var(--pink)',fontSize:16,marginLeft:8,flexShrink:0,transition:'transform .2s',transform:isExpanded?'rotate(90deg)':'none'}}>
+                              {isCompleted?'✅':'›'}
+                            </div>
+                          </div>
+                          {isExpanded && !isCompleted && (
+                            <div style={{marginBottom:10}}>
+                              <StepSection step={s} savedData={completedSteps[i]||{}} onComplete={data=>handleStepComplete(i,data)}/>
+                            </div>
+                          )}
+                          {isExpanded && isCompleted && (
+                            <div style={{marginBottom:10,padding:'10px 14px',background:'rgba(232,245,233,.6)',borderRadius:10,border:'1px solid #c8e6c9',fontSize:13,color:'#2e7d32'}}>
+                              ✅ Step completed! Click to review or change.
+                            </div>
+                          )}
                         </div>
-                      </div>
-                    ))}
+                      );
+                    })}
                   </div>
 
                   <div className="warn-note" style={{marginTop:14}}>
@@ -503,9 +587,9 @@ function SchoolCodePage({ onBack }) {
                       </div>
                       <div className="form-group">
                         <label className="form-label">Upload Photo <span style={{color:'#e57373'}}>*</span></label>
-                        <div className="upload-zone" onClick={()=>photoRef.current.click()}>
+                        <div className={`upload-zone${photo?' has-file':''}`} onClick={()=>photoRef.current.click()}>
                           <input ref={photoRef} type="file" accept=".jpg,.jpeg,.png" style={{display:'none'}} onChange={e=>setPhoto(e.target.files[0])}/>
-                          <div className="upload-icon">📷</div>
+                          <div style={{width:36,height:36,borderRadius:10,background:'var(--pink-muted)',display:'flex',alignItems:'center',justifyContent:'center',margin:'0 auto 8px',fontSize:16}}>📷</div>
                           {photo ? <p className="upload-name">{photo.name}</p> : <>
                             <p className="upload-main">Click to upload your photo</p>
                             <p className="upload-sub">JPG or PNG, passport-style photo</p>
@@ -516,7 +600,7 @@ function SchoolCodePage({ onBack }) {
                         {japanLoading ? <><span className="spinner"/>Submitting...</> : 'Register for Japanese Exam'}
                       </button>
                     </form>
-                    <button className="btn-outline-pink" onClick={()=>{setCode('');setState('idle');setJapanFields({name:'',country:'',studentId:''});setPhoto(null);}}>
+                    <button className="btn-outline-pink" onClick={()=>{setCode('');setState('idle');setJapanFields({name:'',country:'',studentId:''});setPhoto(null);setCompletedSteps({});setExpandedStep(null);}}>
                       Search Another Code
                     </button>
                   </div>
@@ -577,10 +661,10 @@ function DashboardPage({ onLogout }) {
                   background: n.type==='new' ? 'linear-gradient(to right,rgba(224,85,128,.04),rgba(255,255,255,.88))' : undefined,
                   cursor: n.clickable ? 'pointer' : 'default',
                 }}
-                onClick={n.clickable?()=>setView(n.action||'exam'):undefined}
+                onClick={n.clickable?()=>setView(n.action):undefined}
                 role={n.clickable?'button':undefined}
                 tabIndex={n.clickable?0:undefined}
-                onKeyDown={n.clickable?e=>e.key==='Enter'&&setView(n.action||'exam'):undefined}>
+                onKeyDown={n.clickable?e=>e.key==='Enter'&&setView(n.action):undefined}>
                 <div className="notif-meta">
                   {n.type==='new'&&<span className="new-badge">New</span>}
                   {n.type==='info'&&<span className="info-badge">Info</span>}
@@ -615,3 +699,4 @@ ReactDOM.createRoot(document.getElementById('root')).render(<App/>);
 </script>
 </body>
 </html>
+
