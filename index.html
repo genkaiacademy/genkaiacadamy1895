@@ -652,10 +652,9 @@ const BASE_NOTIFICATIONS = [
 function DashboardPage({ onLogout }) {
   const user = getSession();
   const [view, setView] = useState('dashboard');
-  const [notifications, setNotifications] = useState(BASE_NOTIFICATIONS);
+  const notifications = [REGISTRATION_NOTIF, ...BASE_NOTIFICATIONS];
 
   function handleVerificationSubmit() {
-    setNotifications([REGISTRATION_NOTIF, ...BASE_NOTIFICATIONS]);
     setView('dashboard');
   }
 
