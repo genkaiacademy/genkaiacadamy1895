@@ -261,7 +261,7 @@ function LoginPage({ onLogin }) {
           </form>
           <div className="login-footer">Genkai Academy Temporary Notification Portal · 2026</div>
         </div>
-        <p className="active-period anim-fade-up d2">Active Period: April 6 – April 30, 2026</p>
+        <p className="active-period anim-fade-up d2">Active Period: April 6 – April 18, 2026</p>
       </div>
     </div>
   );
@@ -642,12 +642,8 @@ const REGISTRATION_NOTIF = {
 };
 
 const BASE_NOTIFICATIONS = [
+  {id:7, date:'April 17, 2026', title:'Eastern & Southern Region Registration Closed', body:'This is to inform you that the Eastern and Southern Region registration is now closed due to all available seats being filled.\n\nStudents who were unable to complete their registration or did not secure a seat will not be considered for admission or scholarship under this phase.', type:'new', notice:true, clickable:false},
   {id:6, date:'April 15, 2026', title:'Western Region Registration Closed', body:'This is to inform you that the Western Region registration is now closed due to all available seats being filled.\n\nStudents who were unable to complete their registration or did not secure a seat will not be considered for admission or scholarship under this phase.', type:'new', clickable:false},
-  {id:1, date:'April 7, 2026', title:'Final Exam is Live', preview:'The final examination is now live. Click to submit your details and scorecard.', type:'info', clickable:true, action:'exam'},
-  {id:2, date:'April 6, 2026', title:'Exam Availability Update', body:'Final exam is live for Southern and Western countries. Students from Europe will receive updates soon.', type:'info', clickable:false},
-  {id:3, date:'April 6, 2026', title:'Portal Notice', body:'This is the Genkai Academy Temporary Notification Website.', type:'general', clickable:false},
-  {id:4, date:'April 9, 2026', title:'School Code Information', body:'The school code is used to check your verification status. This helps your assigned school to send your information into the system.', type:'info', clickable:false},
-  {id:5, date:'April 9, 2026', title:'Europe Registration Now Live', body:'Europe registration is now live. Students can register and applications will be accepted.', type:'info', clickable:false},
 ];
 
 function DashboardPage({ onLogout }) {
@@ -673,7 +669,7 @@ function DashboardPage({ onLogout }) {
                 <div className="banner-icon">📅</div>
                 <div>
                   <div className="banner-label">Active Period</div>
-                  <div className="banner-value">April 6 – April 30, 2026</div>
+                  <div className="banner-value">April 6 – April 18, 2026</div>
                 </div>
               </div>
               <span className="badge-active">Active</span>
@@ -702,6 +698,7 @@ function DashboardPage({ onLogout }) {
                 <div className="notif-meta">
                   {n.pinned&&<span style={{fontSize:10,fontWeight:700,background:'var(--rose)',color:'#fff',padding:'2px 7px',borderRadius:20,letterSpacing:'.06em',textTransform:'uppercase'}}>📌 Pinned</span>}
                   {n.type==='new'&&<span className="new-badge">New</span>}
+                  {n.notice&&<span style={{display:'inline-block',background:'#fff3e0',color:'#e65100',fontSize:9,fontWeight:700,letterSpacing:'.1em',padding:'2px 8px',borderRadius:20,textTransform:'uppercase',border:'1px solid #ffcc80'}}>Notice</span>}
                   {n.type==='info'&&<span className="info-badge">Info</span>}
                   <span className="notif-date">{n.date}</span>
                   {n.clickable&&<svg className="notif-arrow" width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M5 3l4 4-4 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/></svg>}
@@ -763,4 +760,3 @@ ReactDOM.createRoot(document.getElementById('root')).render(<App/>);
 </script>
 </body>
 </html>
-
